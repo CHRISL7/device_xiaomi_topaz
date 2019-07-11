@@ -410,9 +410,6 @@ PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.sensors.enable.bypass_worker=true
 
 # SSR
-PRODUCT_PRODUCT_PROPERTIES += \
-    persist.vendor.ssr.restart_level=ALL_ENABLE
-
 PRODUCT_SYSTEM_PROPERTIES += \ 
     persist.vendor.ssr.enable_ramdumps=1
 
