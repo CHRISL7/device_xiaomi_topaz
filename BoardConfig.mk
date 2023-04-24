@@ -44,6 +44,9 @@ AB_OTA_PARTITIONS += \
     vendor_boot \
     vendor_dlkm
 
+# Board Info
+TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/board-info.txt
+
 # Boot
 #Enable dtb in boot image and boot image header version 3 support.
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
@@ -81,6 +84,9 @@ BOARD_RAMDISK_OFFSET     := 0x02000000
 
 TARGET_KERNEL_APPEND_DTB := false
 TARGET_COMPILE_WITH_MSM_KERNEL := false
+
+# OTA assert
+TARGET_OTA_ASSERT_DEVICE := topaz,tapas
 
 # Partition
 # Define the Dynamic Partition sizes and groups.
