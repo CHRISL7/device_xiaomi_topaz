@@ -3,6 +3,8 @@
 # Product-specific compile-time definitions.
 #
 
+DEVICE_PATH := device/xiaomi/topaz
+
 BOARD_SYSTEMSDK_VERSIONS := $(SHIPPING_API_LEVEL)
 
 TARGET_BOARD_PLATFORM := bengal
