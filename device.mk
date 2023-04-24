@@ -36,6 +36,15 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.device_id_attestation.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.device_id_attestation.xml
 
 # Camera
+PRODUCT_PACKAGES += \
+    android.hardware.camera.provider@2.4-impl \
+    android.hardware.camera.provider@2.4-service_64 \
+    libcamera2ndk_vendor \
+    libdng_sdk.vendor \
+    libstdc++.vendor \
+    vendor.qti.hardware.camera.device@1.0.vendor \
+    vendor.qti.hardware.camera.postproc@1.0.vendor
+
 PRODUCT_PROPERTY_OVERRIDES += \
     camera.disable_zsl_mode=1
 
@@ -49,6 +58,17 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.crypto.volume.filenames_mode = "aes-256-cts" \
     ro.crypto.allow_encrypt_override = true
+
+# Display
+PRODUCT_PACKAGES += \
+    android.frameworks.displayservice@1.0.vendor \
+    vendor.qti.hardware.display.config-V2-ndk_platform.vendor \
+    vendor.qti.hardware.display.config-V5-ndk_platform.vendor
+
+# DRM
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.4.vendor \
+    android.hardware.drm@1.4-service.clearkey
 
 # Enable Dynamic partition
 PRODUCT_BUILD_SUPER_PARTITION := false
@@ -87,6 +107,23 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.incremental.enable=1
 
+# Identity
+PRODUCT_PACKAGES += \
+    android.hardware.identity-V3-ndk_platform.vendor
+
+# Keymaster
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.keystore.app_attest_key.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.keystore.app_attest_key.xml
+
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0.vendor \
+    android.hardware.keymaster@4.1.vendor
+
+# Keymint
+PRODUCT_PACKAGES += \
+    android.hardware.security.keymint-V1-ndk_platform.vendor \
+    libkeymaster_messages.vendor
+
 # Kernel
 TARGET_KERNEL_VERSION := 5.15
 
@@ -115,6 +152,10 @@ NEED_AIDL_NDK_PLATFORM_BACKEND := true
 # Netmgr
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
     persist.data.netmgrd.qos.enable=true
+
+# Neural Networks
+PRODUCT_PACKAGES += \
+    android.hardware.neuralnetworks-V1-ndk_platform.vendor
 
 # qcom/common tree
 TARGET_BOARD_PLATFORM := bengal
@@ -162,7 +203,8 @@ PRODUCT_SHIPPING_API_LEVEL := $(SHIPPING_API_LEVEL)
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@2.1-service.multihal
+    android.hardware.sensors@2.1-service.multihal \
+    libsensorndkbridge
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.accelerometer.xml \
@@ -174,9 +216,17 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.stepcounter.xml \
     frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.stepdetector.xml
 
+# Thermal
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@2.0-service.qti-v2
+
 # Time-services
 PRODUCT_VENDOR_PROPERTIES += \
     persist.timed.enable=true
+
+# Trusted User Interface
+PRODUCT_PACKAGES += \
+    vendor.qti.hardware.systemhelper@1.0.vendor
 
 # USB
 TARGET_HAS_DIAG_ROUTER := true
@@ -184,3 +234,7 @@ TARGET_HAS_DIAG_ROUTER := true
 # Verified Boot
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.verified_boot.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.verified_boot.xml
+
+# WiFi Display
+PRODUCT_PACKAGES += \
+    libwfdaac_vendor
