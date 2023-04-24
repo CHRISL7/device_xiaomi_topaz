@@ -35,9 +35,13 @@ AB_OTA_PARTITIONS += \
     dtbo \
     init_boot \
     odm \
-    recovery \
+    product \
+    system \
     system_dlkm \
+    system_ext \
+    recovery \
     vbmeta \
+    vbmeta_system \
     vendor \
     vendor_boot \
     vendor_dlkm
@@ -102,14 +106,16 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 17179869184
 BOARD_SUPER_PARTITION_SIZE := 6442450944
 BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
 BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 6438256640
-BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := vendor vendor_dlkm system_dlkm odm
+BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := odm product system system_ext vendor vendor_dlkm system_dlkm
 BOARD_EXT4_SHARE_DUP_BLOCKS := true
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x06000000
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
 
 TARGET_COPY_OUT_ODM := odm
-TARGET_COPY_OUT_VENDOR := vendor
+TARGET_COPY_OUT_PRODUCT := product
+TARGET_COPY_OUT_SYSTEM_EXT := system_ext
 TARGET_COPY_OUT_SYSTEM_DLKM := system_dlkm
+TARGET_COPY_OUT_VENDOR := vendor
 TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 
 BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := ext4
