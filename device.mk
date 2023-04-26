@@ -53,6 +53,11 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.service \
     libtinycompress
 
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/audio/,$(TARGET_COPY_OUT_VENDOR)/etc) \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/audio/audio/,$(TARGET_COPY_OUT_VENDOR)/etc/audio) \
+    $(LOCAL_PATH)/configs/audio/mixer_paths_bengal_idp.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_idp_india.xml
+
 # Authsecret
 PRODUCT_PACKAGES += \
     android.hardware.authsecret@1.0.vendor
