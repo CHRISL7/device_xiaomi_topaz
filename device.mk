@@ -202,8 +202,24 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
     persist.data.netmgrd.qos.enable=true
 
 #  NFC
+$(call inherit-product, hardware/st/nfc/nfc_vendor_product.mk)
+ODM_MANIFEST_SKUS += $(TARGET_NFC_SKU)
+ODM_MANIFEST_M7N_FILES := hardware/st/nfc/aidl/nfc-service-default.xml
+TARGET_USES_ST_AIDL_NFC := true
+TARGET_NFC_SKU := m7n
+
+PRODUCT_PACKAGES += \
+    com.android.nfc_extras \
+    libchrome.vendor \
+    NfcNci \
+    SecureElement \
+    Tag
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nfc/libnfc-hal-st.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-hal-st.conf
+
+PRODUCT_SYSTEM_PROPERTIES += \
+    ro.nfc.port=I2C
 
 # Neural Networks
 PRODUCT_PACKAGES += \

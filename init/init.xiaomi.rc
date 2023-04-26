@@ -3,6 +3,7 @@ on fs
     chown system system /sys/class/thermal/thermal_message/sconfig
     chmod 0666 /sys/class/thermal/thermal_message/temp_state
     chown system system /sys/class/thermal/thermal_message/temp_state
+    mkdir /data/vendor/nfc 0770 nfc nfc
 
 on post-fs-data
     mkdir /data/vendor/thermal 0771 root system
@@ -160,6 +161,27 @@ service agmhostless_loop /vendor/bin/agmhostless -D 100 -P 103 -C 104 -c 1 -r 48
     disabled
     oneshot
 # add audio agmhostless_loop end
+
+service stflashtool /vendor/bin/STFlashTool
+    class late_start
+    group nfc
+    user nfc
+    disabled
+    oneshot
+
+service nfc_hal_service /vendor/bin/hw/android.hardware.nfc-service.st
+    override
+    class hal
+    user nfc
+    group nfc
+    disabled
+
+on post-fs && property:ro.boot.hwname=topaz
+    start stflashtool
+    setprop ro.vendor.se.type HCE,UICC
+
+on boot && property:ro.boot.hwname=topaz
+    start nfc_hal_service
 
 on property:ro.boot.multisim_config=*
     setprop persist.radio.multisim.config ${ro.boot.multisim_config}
