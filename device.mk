@@ -106,6 +106,9 @@ PRODUCT_PACKAGES += \
     libdisplayconfig.qti \
     android.frameworks.displayservice@1.0.vendor
 
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/displayconfig/,$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig)
+
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.4.vendor \
