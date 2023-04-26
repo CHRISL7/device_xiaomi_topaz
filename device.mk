@@ -179,6 +179,15 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
 PRODUCT_PACKAGES += \
     android.hardware.neuralnetworks-V1-ndk_platform.vendor
 
+# Overlays
+PRODUCT_PACKAGES += \
+    AOSPABengalFrameworksOverlay \
+    BengalCarrierConfigOverlay \
+    BengalFrameworksOverlay \
+    BengalSettingsOverlay \
+    BengalSystemUIOverlay \
+    BengalWifiOverlay
+
 # qcom/common tree
 TARGET_BOARD_PLATFORM := bengal
 TARGET_BOARD_SUFFIX := _515
