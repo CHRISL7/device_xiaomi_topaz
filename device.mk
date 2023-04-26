@@ -206,7 +206,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fstab.qcom \
     fstab.qcom_ramdisk \
-    init.target.rc
+    init.target.rc \
+    init.xiaomi.fingerprint.rc \
+    init.xiaomi.rc \
+    ueventd.xiaomi.rc
 
 # Set GRF/Vendor freeze properties
 BOARD_SHIPPING_API_LEVEL := 33
