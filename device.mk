@@ -73,7 +73,8 @@ PRODUCT_PACKAGES += \
     android.frameworks.displayservice@1.0.vendor \
     vendor.qti.hardware.display.config-V2-ndk_platform.vendor \
     vendor.qti.hardware.display.config-V5-ndk_platform.vendor
-
+    vendor.qti.hardware.memtrack-service
+    
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.4.vendor \
