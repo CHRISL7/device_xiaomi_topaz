@@ -236,13 +236,41 @@ PRODUCT_PACKAGES += \
 
 # Kernel
 TARGET_KERNEL_VERSION := 5.15
+BOARD_KERNEL_BINARIES := kernel
 
-KERNEL_MODULES_INSTALL := dlkm
-KERNEL_MODULES_OUT := out/target/product/$(PRODUCT_NAME)/$(KERNEL_MODULES_INSTALL)/lib/modules
+PRODUCT_VENDOR_KERNEL_HEADERS += $(LOCAL_PATH)-kernel/kernel-headers
+BOARD_PREBUILT_DTBOIMAGE := $(LOCAL_PATH)-kernel/dtbo.img
+TARGET_PREBUILT_DTB := $(LOCAL_PATH)-kernel/dtb.img
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)-kernel/kernel
 
-ifneq ("$(wildcard device/qcom/$(TARGET_BOARD_PLATFORM)-kernel/vendor_dlkm/system_dlkm.modules.blocklist)", "")
-PRODUCT_COPY_FILES += device/qcom/$(TARGET_BOARD_PLATFORM)-kernel/vendor_dlkm/system_dlkm.modules.blocklist:$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules/system_dlkm.modules.blocklist
-endif
+PRODUCT_COPY_FILES += \
+    $(TARGET_PREBUILT_KERNEL):kernel \
+    $(TARGET_PREBUILT_DTB):$(TARGET_COPY_OUT)/dtb.img \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)-kernel/ramdisk-modules,$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules) \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)-kernel/system_dlkm-modules/5.15.41,$(TARGET_COPY_OUT_SYSTEM_DLKM)/lib/modules) \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)-kernel-qca_cld3_wlan,$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules)
+
+BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := \
+    $(LOCAL_PATH)-kernel/vendor_dlkm-modules/modules.blocklist \
+    $(LOCAL_PATH)-kernel/vendor_dlkm-modules/system_dlkm.modules.blocklist
+
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE := \
+    $(LOCAL_PATH)-kernel/ramdisk-modules/modules.blocklist
+
+BOARD_SYSTEM_KERNEL_MODULES_LOAD := \
+    $(LOCAL_PATH)-kernel/system_dlkm-modules/5.15.41/modules.load
+
+BOARD_VENDOR_KERNEL_MODULES_LOAD := \
+    $(LOCAL_PATH)-kernel/vendor_dlkm-modules/modules.load
+
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := \
+    $(LOCAL_PATH)-kernel/ramdisk-modules/modules.load
+
+BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := \
+    $(LOCAL_PATH)-kernel/ramdisk-modules/modules.load.recovery
+
+BOARD_VENDOR_RAMDISK_FRAGMENTS := dlkm
+BOARD_VENDOR_RAMDISK_FRAGMENT.dlkm.KERNEL_MODULE_DIRS := top
 
 # Keylayout
 PRODUCT_COPY_FILES += \
