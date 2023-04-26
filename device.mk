@@ -135,6 +135,10 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.incremental.enable=1
 
+# IDC
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/idc/,$(TARGET_COPY_OUT_VENDOR)/usr/idc)
+
 # Identity
 PRODUCT_PACKAGES += \
     android.hardware.identity-V3-ndk_platform.vendor
@@ -148,6 +152,10 @@ KERNEL_MODULES_OUT := out/target/product/$(PRODUCT_NAME)/$(KERNEL_MODULES_INSTAL
 ifneq ("$(wildcard device/qcom/$(TARGET_BOARD_PLATFORM)-kernel/vendor_dlkm/system_dlkm.modules.blocklist)", "")
 PRODUCT_COPY_FILES += device/qcom/$(TARGET_BOARD_PLATFORM)-kernel/vendor_dlkm/system_dlkm.modules.blocklist:$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules/system_dlkm.modules.blocklist
 endif
+
+# Keylayout
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/keylayout/,$(TARGET_COPY_OUT_VENDOR)/usr/keylayout)
 
 # Keymaster
 PRODUCT_PACKAGES += \
