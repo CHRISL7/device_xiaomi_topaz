@@ -82,7 +82,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     disable_configstore \
     libdisplayconfig.qti \
-    android.frameworks.displayservice@1.0.vendor
+    android.frameworks.displayservice@1.0.vendor \
+    vendor.qti.hardware.memtrack-service
 
 # DRM
 PRODUCT_PACKAGES += \
