@@ -63,7 +63,12 @@ BOARD_KERNEL_SEPARATED_DTBO := false
 BOARD_INCLUDE_RECOVERY_DTBO := false
 
 # HIDL
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(DEVICE_PATH)/configs/hidl/xiaomi_framework_compatibility_matrix.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/hidl/manifest.xml
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/hidl/xiaomi_manifest.xml
+
+ODM_MANIFEST_SKUS += xiaomi
+ODM_MANIFEST_XIAOMI_FILES := $(DEVICE_PATH)/configs/hidl/xiaomi_odm_manifest.xml
 
 # Kernel
 BOARD_KERNEL_CMDLINE := \
