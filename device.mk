@@ -203,6 +203,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.perf@2.3.vendor
 
+# Overlays
+PRODUCT_PACKAGES += \
+    AOSPABengalFrameworksOverlay \
+    BengalCarrierConfigOverlay \
+    BengalFrameworksOverlay \
+    BengalSettingsOverlay \
+    BengalSystemUIOverlay \
+    BengalWifiOverlay
+
 # qcom/common tree
 TARGET_BOARD_PLATFORM := bengal
 TARGET_BOARD_SUFFIX := _515
