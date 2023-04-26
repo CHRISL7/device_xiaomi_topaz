@@ -221,7 +221,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fstab.qcom \
     fstab.qcom_ramdisk \
-    init.target.rc
+    init.target.rc \
+    init.xiaomi.fingerprint.rc \
+    init.xiaomi.rc \
+    ueventd.xiaomi.rc
 
 # Set GRF/Vendor freeze properties
 BOARD_SHIPPING_API_LEVEL := 33
@@ -258,6 +261,13 @@ PRODUCT_VENDOR_PROPERTIES += \
 # Trusted User Interface
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.systemhelper@1.0.vendor
+
+# USB
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init/init.qcom.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.qcom.usb.rc
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init/init.qcom.usb.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.usb.sh
 
 # Verified Boot
 PRODUCT_COPY_FILES += \
