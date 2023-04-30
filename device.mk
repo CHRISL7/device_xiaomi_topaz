@@ -133,8 +133,8 @@ PRODUCT_COPY_FILES += \
     
 # Crypto
 PRODUCT_VENDOR_PROPERTIES += \
-    ro.crypto.volume.filenames_mode = "aes-256-cts" \
-    ro.crypto.allow_encrypt_override = true
+    ro.crypto.volume.filenames_mode=aes-256-cts \
+    ro.crypto.allow_encrypt_override=true
 
 # Display
 PRODUCT_PACKAGES += \
