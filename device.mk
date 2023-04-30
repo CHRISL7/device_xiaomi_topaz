@@ -109,7 +109,7 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.camera.device@1.0.vendor \
     vendor.qti.hardware.camera.postproc@1.0.vendor
 
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
     camera.disable_zsl_mode=1 \
     sys.haptic.ignoreWhenCamera=true
 
@@ -132,7 +132,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.consumerir.xml
     
 # Crypto
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
     ro.crypto.volume.filenames_mode = "aes-256-cts" \
     ro.crypto.allow_encrypt_override = true
 
@@ -194,7 +194,7 @@ PRODUCT_VENDOR_PROPERTIES += \
     ro.hardware.fp.sideCap=true
     
 #  FUSE passthrough
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
     persist.sys.fuse.passthrough.enable=true
 
 # Graphics
@@ -213,7 +213,7 @@ PRODUCT_SYSTEM_PROPERTIES += \
     persist.vendor.overlay.izat.optin=rro
 
 # Incremental FS
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
     ro.incremental.enable=1
 
 # IDC
