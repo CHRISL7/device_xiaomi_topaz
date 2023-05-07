@@ -33,8 +33,6 @@
 #
 
 import /vendor/etc/init/hw/init.qti.kernel.rc
-import /vendor/etc/init/hw/init.xiaomi.fingerprint.rc
-import /vendor/etc/init/hw/init.xiaomi.rc
 
 on early-init
     write /proc/sys/kernel/sched_boost 1
