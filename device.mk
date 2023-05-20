@@ -491,3 +491,6 @@ PRODUCT_VENDOR_PROPERTIES += \
     ro.hardware.wlan.chip=wcn3950 \
     ro.hardware.wlan.mimo=0 \
     ro.hardware.wlan.dbs=0
+
+# Inherit from vendor blobs
+$(call inherit-product, vendor/xiaomi/topaz/topaz-vendor.mk)
