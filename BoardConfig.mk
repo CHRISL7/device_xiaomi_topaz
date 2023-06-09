@@ -70,6 +70,10 @@ DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/hidl/xiaomi_manifest.xml
 ODM_MANIFEST_SKUS += xiaomi
 ODM_MANIFEST_XIAOMI_FILES := $(DEVICE_PATH)/configs/hidl/xiaomi_odm_manifest.xml
 
+# Init
+TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_topaz
+TARGET_RECOVERY_DEVICE_MODULES := libinit_topaz
+
 # Kernel
 BOARD_KERNEL_CMDLINE := \
     bpp=32 \
