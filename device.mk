@@ -217,6 +217,9 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
 PRODUCT_SYSTEM_PROPERTIES += \
     persist.vendor.overlay.izat.optin=rro
 
+# Health
+TARGET_USE_AIDL_QTI_HEALTH := true
+
 # Incremental FS
 PRODUCT_VENDOR_PROPERTIES += \
     ro.incremental.enable=1
