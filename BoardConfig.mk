@@ -88,6 +88,7 @@ BOARD_BOOTCONFIG := \
     androidboot.hardware=qcom \
     androidboot.memcg=1 \
     androidboot.load_modules_parallel=true \
+    androidboot.selinux=permissive \
     androidboot.usbcontroller=4e00000.dwc3
 
 BOARD_KERNEL_BASE        := 0x00000000
