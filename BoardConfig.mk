@@ -5,7 +5,6 @@
 
 DEVICE_PATH := device/xiaomi/topaz
 
-TARGET_BOOTLOADER_BOARD_NAME := bengal
 
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -18,6 +17,10 @@ TARGET_2ND_ARCH_VARIANT := armv7-a-neon
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a9
+
+# Bootloader
+TARGET_BOOTLOADER_BOARD_NAME := bengal
+TARGET_NO_BOOTLOADER := true
 
 # Build Broken
 BUILD_BROKEN_DUP_RULES := true
