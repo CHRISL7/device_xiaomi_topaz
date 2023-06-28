@@ -372,6 +372,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fstab.qcom \
     fstab.qcom_ramdisk \
+    init.topaz.rc \
     init.target.rc \
     init.xiaomi.fingerprint.rc \
     init.xiaomi.rc \
