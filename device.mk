@@ -64,7 +64,7 @@ PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/audio/audio/,$(TARGET_COPY_OUT_VENDOR)/etc/audio) \
     $(LOCAL_PATH)/configs/audio/mixer_paths_bengal_idp.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_idp_india.xml
 
-PRODUCT_SYSTEM_PROPERTIES += \    
+PRODUCT_SYSTEM_PROPERTIES += \
     persist.vendor.audio.ozo.codec.enable=true
 
 PRODUCT_VENDOR_PROPERTIES += \
@@ -79,9 +79,9 @@ PRODUCT_VENDOR_PROPERTIES += \
     ro.vendor.audio.sfx.scenario=true \
     ro.vendor.audio.sfx.earadj=true \
     ro.vendor.audio.sdk.fluencetype=none \
-    ro.vendor.audio.vocal.support=true \ 
+    ro.vendor.audio.vocal.support=true \
     ro.vendor.audio.voice.change.support=true \
-    ro.vendor.audio.voice.change.version=2 
+    ro.vendor.audio.voice.change.version=2
 
 # Authsecret
 PRODUCT_PACKAGES += \
@@ -125,7 +125,7 @@ PRODUCT_VENDOR_PROPERTIES += \
     camera.disable_zsl_mode=1 \
     sys.haptic.ignoreWhenCamera=true
 
-PRODUCT_SYSTEM_PROPERTIES += \    
+PRODUCT_SYSTEM_PROPERTIES += \
     persist.vendor.camera.aon.cameraId=8 \
     persist.vendor.camera.aon8475.cameraId=9
 
@@ -142,7 +142,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.consumerir.xml
-    
+
 # Crypto
 PRODUCT_VENDOR_PROPERTIES += \
     ro.crypto.volume.filenames_mode=aes-256-cts \
@@ -178,9 +178,9 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.4.vendor \
     android.hardware.drm@1.4-service.clearkey
 
-PRODUCT_VENDOR_PROPERTIES += \    
+PRODUCT_VENDOR_PROPERTIES += \
     drm.service.enabled=true
-    
+
 # Enable Dynamic partition
 PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
@@ -197,9 +197,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
 
-PRODUCT_VENDOR_PROPERTIES += \     
+PRODUCT_VENDOR_PROPERTIES += \
     ro.hardware.fp.sideCap=true
-    
+
 #  FUSE passthrough
 PRODUCT_VENDOR_PROPERTIES += \
     persist.sys.fuse.passthrough.enable=true
@@ -355,7 +355,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
     persist.vendor.radio.enable_temp_dds=true \
     ro.vendor.radio.features_common=3 \
     ro.vendor.radio.fastdormancy=true
-    
+
 PRODUCT_VENDOR_PROPERTIES += \
     ro.vendor.se.type=HCE,UICC \
     persist.vendor.data.iwlan.enable=true \
@@ -413,7 +413,7 @@ PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.sensors.enable.bypass_worker=true
 
 # SSR
-PRODUCT_SYSTEM_PROPERTIES += \ 
+PRODUCT_SYSTEM_PROPERTIES += \
     persist.vendor.ssr.enable_ramdumps=1
 
 # Telephony
@@ -423,7 +423,7 @@ PRODUCT_COPY_FILES += \
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal@2.0-service.qti-v2
-    
+
 # Time-services
 PRODUCT_VENDOR_PROPERTIES += \
     persist.timed.enable=true
