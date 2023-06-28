@@ -159,6 +159,9 @@ VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 # Sepolicy
 include device/xiaomi/topaz/sepolicy/topaz-sepolicy.mk
 
+# Treble flag
+BOARD_VNDK_VERSION := current
+
 # Verified Boot
 BOARD_AVB_ENABLE := true
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
