@@ -177,10 +177,6 @@ PRODUCT_VENDOR_PROPERTIES += \
 PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
-#Enable full treble flag
-PRODUCT_FULL_TREBLE_OVERRIDE := true
-PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
-
 # Fastboot
 PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.1-impl-mock \
