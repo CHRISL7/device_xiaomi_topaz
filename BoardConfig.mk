@@ -159,9 +159,6 @@ VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 # Sepolicy
 include device/xiaomi/topaz/sepolicy/topaz-sepolicy.mk
 
-# Treble
-BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
-
 # Verified Boot
 BOARD_AVB_ENABLE := true
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
