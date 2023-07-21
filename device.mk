@@ -20,13 +20,13 @@ PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := gz
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
     POSTINSTALL_PATH_system=system/bin/otapreopt_script \
-    FILESYSTEM_TYPE_system=ext4  \
+    FILESYSTEM_TYPE_system=erofs  \
     POSTINSTALL_OPTIONAL_system=true
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_vendor=true \
     POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
-    FILESYSTEM_TYPE_vendor=ext4  \
+    FILESYSTEM_TYPE_vendor=erofs  \
     POSTINSTALL_OPTIONAL_vendor=true
 
 PRODUCT_PACKAGES += \
@@ -50,6 +50,10 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 # APEX
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
+# ATrace
+PRODUCT_PACKAGES += \
+    android.hardware.atrace@1.0-service
+
 # Attestation
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.device_id_attestation.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.device_id_attestation.xml
@@ -61,16 +65,12 @@ SOONG_CONFIG_android_hardware_audio += \
 SOONG_CONFIG_android_hardware_audio_run_64bit := true
 
 PRODUCT_PACKAGES += \
-    android.hardware.audio.service \
-    libtinycompress
+    android.hardware.audio.service
 
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/audio/,$(TARGET_COPY_OUT_VENDOR)/etc) \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/audio/audio/,$(TARGET_COPY_OUT_VENDOR)/etc/audio) \
     $(LOCAL_PATH)/configs/audio/mixer_paths_bengal_idp.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_idp_india.xml
-
-PRODUCT_SYSTEM_PROPERTIES += \
-    persist.vendor.audio.ozo.codec.enable=true
 
 PRODUCT_VENDOR_PROPERTIES += \
     debug.stagefright.c2inputsurface=-1 \
@@ -154,9 +154,11 @@ PRODUCT_VENDOR_PROPERTIES += \
 
 # Display
 PRODUCT_PACKAGES += \
-    disable_configstore \
     libdisplayconfig.qti \
-    android.frameworks.displayservice@1.0.vendor
+    android.frameworks.displayservice@1.0.vendor \
+    android.hardware.graphics.common-V2-ndk_platform.vendor \
+    vendor.qti.hardware.display.config-V2-ndk_platform.vendor \
+    vendor.qti.hardware.display.config-V5-ndk_platform.vendor
 
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/displayconfig/,$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig)
@@ -187,7 +189,6 @@ PRODUCT_VENDOR_PROPERTIES += \
     drm.service.enabled=true
 
 # Enable Dynamic partition
-PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Fastboot
@@ -241,41 +242,15 @@ PRODUCT_PACKAGES += \
 
 # Kernel
 TARGET_KERNEL_VERSION := 5.15
-BOARD_KERNEL_BINARIES := kernel
-
 PRODUCT_VENDOR_KERNEL_HEADERS += $(LOCAL_PATH)-kernel/kernel-headers
-BOARD_PREBUILT_DTBOIMAGE := $(LOCAL_PATH)-kernel/dtbo.img
-TARGET_PREBUILT_DTB := $(LOCAL_PATH)-kernel/dtb.img
+
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)-kernel/kernel
 
 PRODUCT_COPY_FILES += \
     $(TARGET_PREBUILT_KERNEL):kernel \
-    $(TARGET_PREBUILT_DTB):$(TARGET_COPY_OUT)/dtb.img \
-    $(call find-copy-subdir-files,*,$(LOCAL_PATH)-kernel/ramdisk-modules,$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules) \
-    $(call find-copy-subdir-files,*,$(LOCAL_PATH)-kernel/system_dlkm-modules/5.15.41,$(TARGET_COPY_OUT_SYSTEM_DLKM)/lib/modules) \
-    $(call find-copy-subdir-files,*,$(LOCAL_PATH)-kernel-qca_cld3_wlan,$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules)
 
-BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := \
-    $(LOCAL_PATH)-kernel/vendor_dlkm-modules/modules.blocklist \
-    $(LOCAL_PATH)-kernel/vendor_dlkm-modules/system_dlkm.modules.blocklist
-
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE := \
-    $(LOCAL_PATH)-kernel/ramdisk-modules/modules.blocklist
-
-BOARD_SYSTEM_KERNEL_MODULES_LOAD := \
-    $(LOCAL_PATH)-kernel/system_dlkm-modules/5.15.41/modules.load
-
-BOARD_VENDOR_KERNEL_MODULES_LOAD := \
-    $(LOCAL_PATH)-kernel/vendor_dlkm-modules/modules.load
-
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := \
-    $(LOCAL_PATH)-kernel/ramdisk-modules/modules.load
-
-BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := \
-    $(LOCAL_PATH)-kernel/ramdisk-modules/modules.load.recovery
-
-BOARD_VENDOR_RAMDISK_FRAGMENTS := dlkm
-BOARD_VENDOR_RAMDISK_FRAGMENT.dlkm.KERNEL_MODULE_DIRS := top
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)-kernel/topaz.dtb:dtb.img
 
 # Keylayout
 PRODUCT_COPY_FILES += \
@@ -349,29 +324,46 @@ PRODUCT_PACKAGES += \
 
 # Overlays
 PRODUCT_PACKAGES += \
-    AOSPABengalFrameworksOverlay \
-    BengalCarrierConfigOverlay \
-    BengalFrameworksOverlay \
-    BengalSettingsOverlay \
-    BengalSystemUIOverlay \
-    BengalWifiOverlay
+    AospWifiResOverlayTopaz \
+    CarrierConfigResCommon \
+    FrameworksResCommon \
+    FrameworksResOverlayTopaz \
+    SettingsOverlayTopaz \
+    SettingsResCommon \
+    SystemUIOverlayTopaz \
+    SystemUIResCommon \
+    TelecommResCommon \
+    TelephonyResCommon \
+    WifiResCommon
+
+PRODUCT_PACKAGES += \
+    SettingsOverlayM7G \
+    SettingsOverlayM7N \
+    SettingsOverlayM7L \
+    SettingsOverlayM7IN
 
 # qcom/common tree
 TARGET_BOARD_PLATFORM := bengal
 TARGET_BOARD_SUFFIX := _515
+TARGET_ADRENO_COMPONENT_VARIANT := adreno
+TARGET_GPS_COMPONENT_VARIANT := gps
+TARGET_MEDIA_COMPONENT_VARIANT := media
+TARGET_PERF_COMPONENT_VARIANT := perf
+TARGET_WLAN_COMPONENT_VARIANT := wlan
 
 TARGET_COMMON_QTI_COMPONENTS += \
+    adreno \
+    alarm \
     audio \
     av \
     bt \
     charging \
     display \
-    dsprpcd \
-    gps \
     init \
+    keymaster \
     media \
-    overlay \
     perf \
+    qseecomd \
     telephony \
     usb \
     vibrator \
@@ -414,6 +406,11 @@ PRODUCT_PACKAGES += \
     init.xiaomi.rc \
     ueventd.xiaomi.rc
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init/init.recovery.qcom.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.qcom.rc \
+    $(LOCAL_PATH)/init/init.qcom.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.qcom.rc \
+    $(LOCAL_PATH)/init/init.qcom.legacy.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.qcom.legacy.rc
+
 # Set GRF/Vendor freeze properties
 BOARD_SHIPPING_API_LEVEL := 33
 BOARD_API_LEVEL := 33
@@ -424,7 +421,7 @@ PRODUCT_SHIPPING_API_LEVEL := $(SHIPPING_API_LEVEL)
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@2.0-ScopedWakelock.vendor \
-    android.hardware.sensors@2.1-service.multihal \
+    android.hardware.sensors@2.1-service.xiaomi-multihal \
     android.frameworks.sensorservice@1.0.vendor \
     libsensorndkbridge
 
@@ -453,9 +450,12 @@ PRODUCT_SYSTEM_PROPERTIES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.mbms.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.mbms.xml
 
+# Treble
+PRODUCT_FULL_TREBLE_OVERRIDE := true
+
 # Thermal
-PRODUCT_PACKAGES += \
-    android.hardware.thermal@2.0-service.qti-v2
+PRODUCT_VENDOR_PROPERTIES += \
+    vendor.sys.thermal.data.path=/data/vendor/thermal/
 
 # Time-services
 PRODUCT_VENDOR_PROPERTIES += \
@@ -463,6 +463,7 @@ PRODUCT_VENDOR_PROPERTIES += \
 
 # Trusted User Interface
 PRODUCT_PACKAGES += \
+    android.hidl.memory.block@1.0.vendor \
     vendor.qti.hardware.systemhelper@1.0.vendor
 
 # USB
@@ -480,6 +481,10 @@ endif
 # Verified Boot
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.verified_boot.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.verified_boot.xml
+
+# VNDK
+PRODUCT_COPY_FILES += \
+    prebuilts/vndk/v32/arm64/arch-arm64-armv8-a/shared/vndk-sp/libhidlbase.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libhidlbase-v32.so
 
 # WiFi Display
 PRODUCT_PACKAGES += \

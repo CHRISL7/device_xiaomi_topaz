@@ -230,16 +230,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE
         </interface>
         <fqname>@1.0::IPAL/default</fqname>
     </hal>
-    <hal format="hidl">
-       <name>android.hardware.gatekeeper</name>
-       <transport>hwbinder</transport>
-       <impl level="generic"></impl>
-       <version>1.0</version>
-       <interface>
-           <name>IGatekeeper</name>
-           <instance>default</instance>
-       </interface>
-    </hal>
     <!-- SensorCal HAL service -->
     <hal format="hidl">
         <name>vendor.qti.hardware.sensorscalibrate</name>
