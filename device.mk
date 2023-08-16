@@ -151,6 +151,12 @@ PRODUCT_VENDOR_PROPERTIES += \
     vendor.display.svi.config=1 \
     vendor.display.svi.config_path=/vendor/etc/SVIConfig.xml
 
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.vendor.display.dither=true \
+    ro.vendor.display.mi_calib.enable=true \
+    ro.vendor.histogram.enable=true \
+    ro.vendor.xiaomi.bl.poll=true
+
 # DPM vndr
 PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.dpm.vndr.idletimer.mode=default \
@@ -380,6 +386,9 @@ ifneq ($(TARGET_BUILD_VARIANT),user)
 PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.usb.config=mtp,adb
 endif
+
+# Inherit from vendor blobs
+$(call inherit-product, vendor/xiaomi/topaz/topaz-vendor.mk)
 
 # Verified Boot
 PRODUCT_COPY_FILES += \
