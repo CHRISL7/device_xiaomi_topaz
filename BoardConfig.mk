@@ -4,6 +4,7 @@
 #
 
 DEVICE_PATH := device/xiaomi/topaz
+COMMON_SEPOLICY_PATH := device/qcom/common/sepolicy
 
 # Architecture
 TARGET_ARCH := arm64
@@ -141,7 +142,19 @@ SOONG_CONFIG_ufsbsg_ufsframework := bsg
 VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 
 # Sepolicy
+include device/qcom/sepolicy_vndr/SEPolicy.mk
 include device/xiaomi/topaz/sepolicy/topaz-sepolicy.mk
+BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/qva/vendor/common
+BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/generic/vendor/common
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(COMMON_SEPOLICY_PATH)/common/private
+SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(COMMON_SEPOLICY_PATH)/common/public
+
+ifneq ($(AOSPA_BUILD),)
+    BOARD_VENDOR_SEPOLICY_DIRS += \
+        $(COMMON_SEPOLICY_PATH)/pixel/vendor
+    SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += \
+        $(COMMON_SEPOLICY_PATH)/aospa/private
+endif
 
 # AVB
 BOARD_AVB_ENABLE := true
