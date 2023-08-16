@@ -138,6 +138,9 @@ SOONG_CONFIG_ufsbsg_ufsframework := bsg
 # Security patch level
 VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 
+# Sepolicy
+include device/xiaomi/topaz/sepolicy/topaz-sepolicy.mk
+
 # Treble flag
 BOARD_VNDK_VERSION := current
 
