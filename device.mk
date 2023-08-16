@@ -151,6 +151,12 @@ PRODUCT_VENDOR_PROPERTIES += \
     vendor.display.svi.config=1 \
     vendor.display.svi.config_path=/vendor/etc/SVIConfig.xml
 
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.vendor.display.dither=true \
+    ro.vendor.display.mi_calib.enable=true \
+    ro.vendor.histogram.enable=true \
+    ro.vendor.xiaomi.bl.poll=true
+
 # DPM vndr
 PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.dpm.vndr.idletimer.mode=default \
@@ -381,9 +387,17 @@ PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.usb.config=mtp,adb
 endif
 
+# Inherit from vendor blobs
+$(call inherit-product, vendor/xiaomi/topaz/topaz-vendor.mk)
+
 # Verified Boot
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.verified_boot.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.verified_boot.xml
+
+# VNDK
+PRODUCT_COPY_FILES += \
+    prebuilts/vndk/v32/arm64/arch-arm64-armv8-a/shared/vndk-sp/libhidlbase.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libhidlbase-v32.so \
+    prebuilts/vndk/v32/arm64/arch-arm64-armv8-a/shared/vndk-sp/libutils.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libutils-v32.so
 
 # Wlan
 PRODUCT_VENDOR_PROPERTIES += \
