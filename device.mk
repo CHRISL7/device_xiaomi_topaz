@@ -252,6 +252,9 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
     mmp.enable.3g2=true \
     persist.mm.enable.prefetch=true
 
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.mediaserver.64b.enable=true
+
 # NDK
 NEED_AIDL_NDK_PLATFORM_BACKEND := true
 
