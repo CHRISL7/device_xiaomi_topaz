@@ -353,6 +353,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     init.target.rc \
     init.topaz.rc \
+    init.topaz.perf.rc \
     init.xiaomi.fingerprint.rc \
     init.xiaomi.rc \
     ueventd.xiaomi.rc
