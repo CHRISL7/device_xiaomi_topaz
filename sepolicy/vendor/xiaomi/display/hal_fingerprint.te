@@ -1,0 +1,2 @@
+allow hal_fingerprint_default vendor_sysfs_displayfeature:dir search;
+allow hal_fingerprint_default vendor_sysfs_displayfeature:file rw_file_perms;

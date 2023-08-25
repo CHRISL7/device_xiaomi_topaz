@@ -1,0 +1,1 @@
+genfscon sysfs /devices/platform/soc/soc:pwm_vibrator/leds/vibrator u:object_r:sysfs_leds:s0
