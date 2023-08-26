@@ -146,6 +146,11 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.display.config-V5-ndk.vendor \
     vendor.qti.hardware.memtrack-service
 
+PRODUCT_ODM_PROPERTIES += \
+    vendor.display.enable_rounded_corner=0 \
+    vendor.display.disable_rounded_corner_thread=0 \
+    vendor.display.enable_rc_support=0 
+
 PRODUCT_PRODUCT_PROPERTIES += \
     debug.sf.disable_backpressure=1
 
