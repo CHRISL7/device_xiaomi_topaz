@@ -81,8 +81,6 @@ BOARD_BOOTCONFIG := \
     androidboot.memcg=1 \
     androidboot.usbcontroller=4e00000.dwc3
 
-BOARD_BOOTCONFIG += androidboot.selinux=permissive
-
 # OTA assert
 TARGET_OTA_ASSERT_DEVICE := topaz,tapas
 
