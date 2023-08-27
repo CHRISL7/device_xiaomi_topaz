@@ -1,5 +1,25 @@
 # the DIAG device node is not world writable/readable.
 /dev/diag                 0666   system     oem_2901
 
+# FPC fingerprint
+/sys/bus/platform/devices/soc:fingerprint_fpc* irq              0700  system system
+/sys/bus/platform/devices/soc:fingerprint_fpc* irq_enable       0700  system system
+/sys/bus/platform/devices/soc:fingerprint_fpc* wakeup_enable    0700  system system
+/sys/bus/platform/devices/soc:fingerprint_fpc* hw_reset         0700  system system
+/sys/bus/platform/devices/soc:fingerprint_fpc* device_prepare   0700  system system
+/sys/bus/platform/devices/soc:fingerprint_fpc* fingerdown_wait  0700  system system
+/sys/bus/platform/devices/soc:fingerprint_fpc* vendor           0700  system system
+/sys/bus/platform/devices/soc:fingerprint_fpc* request_vreg     0700  system system
+/sys/bus/platform/devices/soc:fingerprint_fpc* power_cfg        0700  system system
+/sys/bus/platform/devices/soc:fingerprint_fpc* power_ctrl       0700  system system
+/sys/bus/platform/devices/soc:fingerprint_fpc* screen           0700  system system
+
 # Ir
 /dev/spidev0.1            0660   system     system
+
+# xiaomi display feature
+subsystem mi_display
+    devname uevent_devpath
+    dirname /dev/mi_display
+
+/dev/mi_display/*         0666   root       graphics
