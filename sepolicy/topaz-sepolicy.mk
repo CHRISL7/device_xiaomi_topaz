@@ -32,6 +32,7 @@ BOARD_VENDOR_SEPOLICY_DIRS += \
     device/xiaomi/topaz/sepolicy/vendor/xiaomi/camera \
     device/xiaomi/topaz/sepolicy/vendor/xiaomi/charger \
     device/xiaomi/topaz/sepolicy/vendor/xiaomi/common \
+    device/xiaomi/topaz/sepolicy/vendor/xiaomi/dolby \
     device/xiaomi/topaz/sepolicy/vendor/xiaomi/fingerprint \
     device/xiaomi/topaz/sepolicy/vendor/xiaomi/ir \
     device/xiaomi/topaz/sepolicy/vendor/xiaomi/last_kmsg \
