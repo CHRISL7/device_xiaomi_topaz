@@ -170,10 +170,6 @@ PRODUCT_VENDOR_PROPERTIES += \
     vendor.display.svi.config=1 \
     vendor.display.svi.config_path=/vendor/etc/SVIConfig.xml
 
-PRODUCT_VENDOR_PROPERTIES += \
-    ro.vendor.histogram.enable=true \
-    ro.vendor.xiaomi.bl.poll=true
-
 # DPM vndr
 PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.dpm.vndr.idletimer.mode=default \
