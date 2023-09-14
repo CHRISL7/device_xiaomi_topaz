@@ -887,7 +887,6 @@ vendor/lib64/libFlacSwDec.so|9ee261c162b053a3b86e5dc0413eccc6864919cc
 vendor/lib64/libdsd2pcm.so|cda87d311c7adb6fb1d61202a609bd916463ad92
 
 # Media configs - from LA.VENDOR.13.2.1.r1-06400-DIVAR.0
-vendor/etc/media_codecs.xml|36c6d1dcef28b420f4b9f31e0e2b2cb4959ee637
 vendor/etc/media_codecs_c2_audio.xml|96a01590c621f86a627cccbb4074c17700a31734
 vendor/etc/media_codecs_khaje_v0.xml|8622a4cc23b0f44cb9498947839e4de3b41b0f45
 vendor/etc/media_codecs_performance_khaje_v0.xml|185facd00815c9b349a8a61ea28c4b2f3343080f
