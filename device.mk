@@ -200,6 +200,11 @@ PRODUCT_VENDOR_PROPERTIES += \
 PRODUCT_PRODUCT_PROPERTIES += \
     persist.sys.fuse.passthrough.enable=true
 
+# Health
+PRODUCT_PACKAGES += \
+    android.hardware.health-service.xiaomi \
+    android.hardware.health-service.xiaomi_recovery
+
 # IDC
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/idc/,$(TARGET_COPY_OUT_VENDOR)/usr/idc)

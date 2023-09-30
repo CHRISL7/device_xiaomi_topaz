@@ -4,6 +4,9 @@
 # Files in rootfs
 /avb(/.*)?                                                     u:object_r:avb_file:s0
 
+# HEALT
+/vendor/bin/hw/android\.hardware\.health-service\.xiaomi                              u:object_r:hal_health_default_exec:s0
+
 # SSR
 /sys/bus/msm_subsys/devices/subsys[0-9]+/name                  u:object_r:vendor_sysfs_ssr:s0
 /sys/bus/msm_subsys/devices/subsys[0-9]+/restart_level         u:object_r:vendor_sysfs_ssr_toggle:s0
