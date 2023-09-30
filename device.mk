@@ -246,6 +246,9 @@ PRODUCT_PACKAGES += \
     libcodec2_soft_common.vendor \
     libsfplugin_ccodec_utils.vendor
 
+PRODUCT_ODM_PROPERTIES += \
+    media.settings.xml=/vendor/etc/media_profiles_khaje_v0.xml
+
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
     media.aac_51_output_enabled=true \
     media.stagefright.enable-aac=true \
