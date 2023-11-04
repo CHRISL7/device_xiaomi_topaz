@@ -26,19 +26,8 @@ BOARD_VENDOR_SEPOLICY_DIRS += \
 
 # Xiaomi and (Device specific) Sepolicy
 BOARD_VENDOR_SEPOLICY_DIRS += \
-    device/xiaomi/topaz/sepolicy/vendor/xiaomi/audio-sensors \
     device/xiaomi/topaz/sepolicy/vendor/xiaomi/battery \
-    device/xiaomi/topaz/sepolicy/vendor/xiaomi/bluetooth \
-    device/xiaomi/topaz/sepolicy/vendor/xiaomi/camera \
-    device/xiaomi/topaz/sepolicy/vendor/xiaomi/charger \
     device/xiaomi/topaz/sepolicy/vendor/xiaomi/common \
     device/xiaomi/topaz/sepolicy/vendor/xiaomi/fingerprint \
-    device/xiaomi/topaz/sepolicy/vendor/xiaomi/ir \
-    device/xiaomi/topaz/sepolicy/vendor/xiaomi/last_kmsg \
-    device/xiaomi/topaz/sepolicy/vendor/xiaomi/light \
-    device/xiaomi/topaz/sepolicy/vendor/xiaomi/modem \
-    device/xiaomi/topaz/sepolicy/vendor/xiaomi/nfc \
     device/xiaomi/topaz/sepolicy/vendor/xiaomi/power \
-    device/xiaomi/topaz/sepolicy/vendor/xiaomi/thermald \
-    device/xiaomi/topaz/sepolicy/vendor/xiaomi/usb \
-    device/xiaomi/topaz/sepolicy/vendor/xiaomi/vibrator
+    device/xiaomi/topaz/sepolicy/vendor/xiaomi/usb

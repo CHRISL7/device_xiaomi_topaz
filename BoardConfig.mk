@@ -149,6 +149,7 @@ TARGET_SCREEN_DENSITY := 420
 VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 
 # Sepolicy
+include device/xiaomi/sepolicy/SEPolicy.mk
 include device/xiaomi/topaz/sepolicy/topaz-sepolicy.mk
 
 # Treble flag

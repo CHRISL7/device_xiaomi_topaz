@@ -1,2 +1,0 @@
-# Diag
-/data/vendor/modem(/.*)? u:object_r:vendor_modem_data_file:s0
